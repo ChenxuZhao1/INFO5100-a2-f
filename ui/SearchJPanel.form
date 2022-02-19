@@ -29,14 +29,14 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="lblMY" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtMY" max="32767" attributes="0"/>
+                              <Component id="txtMY" min="-2" pref="102" max="-2" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Component id="btnMY" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
+                              <EmptySpace min="148" pref="148" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblCity" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lblCity" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="lblSn" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -55,10 +55,10 @@
                                       <Component id="btnSn" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="txtCity" max="32767" attributes="0"/>
+                                      <Component id="txtCity" min="-2" pref="102" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" max="-2" attributes="0"/>
                                       <Component id="btnCity" max="32767" attributes="0"/>
-                                      <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
+                                      <EmptySpace min="147" pref="147" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -159,23 +159,17 @@
                       <Component id="txtCity1" min="-2" pref="86" max="-2" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnUpdate" max="32767" attributes="0"/>
-                          <Component id="btnView" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
-                      <Component id="jTextField10" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="264" max="-2" attributes="0"/>
-                      <Component id="jButton11" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="btnUpdate" max="32767" attributes="0"/>
+                  <Component id="btnView" max="32767" attributes="0"/>
               </Group>
+              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="btnTm" max="32767" attributes="0"/>
+                  <Component id="txtTm" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="395" max="-2" attributes="0"/>
@@ -272,7 +266,7 @@
                           <Component id="txtId1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtMY1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton11" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnTm" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -281,7 +275,7 @@
                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtCity1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnView" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField10" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtTm" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -547,12 +541,15 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jButton11">
+    <Component class="javax.swing.JButton" name="btnTm">
       <Properties>
         <Property name="text" type="java.lang.String" value="Last time updated"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTmActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField10">
+    <Component class="javax.swing.JTextField" name="txtTm">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>

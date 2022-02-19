@@ -253,7 +253,12 @@ public class CreateJPanel extends javax.swing.JPanel {
         certi = cbCert.isSelected();
         
         String city;
-        city = txtCity.getText();
+        if(Pattern.matches("[a-zA-Z]*",txtSeatsNumber.getText()))
+            city = txtCity.getText();
+        else{
+            JOptionPane.showMessageDialog(this, "City must be entered.");
+            return;
+        }
         
         
         Car c = new Car();

@@ -6,8 +6,11 @@ package ui;
 
 import Model.Car;
 import Model.ServiceRecords;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,6 +24,7 @@ public class SearchJPanel extends javax.swing.JPanel {
      * Creates new form SearchJPanel
      */
     ServiceRecords records;
+    String date = "";
     
     public SearchJPanel(ServiceRecords records) {
         initComponents();
@@ -67,8 +71,8 @@ public class SearchJPanel extends javax.swing.JPanel {
         btnMu = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblMu = new javax.swing.JTable();
-        jButton11 = new javax.swing.JButton();
-        jTextField10 = new javax.swing.JTextField();
+        btnTm = new javax.swing.JButton();
+        txtTm = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -215,7 +219,12 @@ public class SearchJPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tblMu);
 
-        jButton11.setText("Last time updated");
+        btnTm.setText("Last time updated");
+        btnTm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTmActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Id:");
 
@@ -256,13 +265,13 @@ public class SearchJPanel extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblMY)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtMY)
+                                .addComponent(txtMY, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnMY, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(148, 148, 148))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblCity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblCity)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(lblSn)
                                         .addGap(18, 18, 18)
@@ -278,7 +287,7 @@ public class SearchJPanel extends javax.swing.JPanel {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(btnSn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtCity)
+                                        .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(btnCity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(147, 147, 147))))
@@ -355,19 +364,15 @@ public class SearchJPanel extends javax.swing.JPanel {
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtCity1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(89, 89, 89)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(122, 122, 122)
-                        .addComponent(jTextField10)
-                        .addGap(133, 133, 133))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(264, 264, 264)
-                        .addComponent(jButton11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(91, 91, 91))))
+                    .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(58, 58, 58)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnTm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtTm))
+                .addGap(91, 91, 91))
             .addGroup(layout.createSequentialGroup()
                 .addGap(395, 395, 395)
                 .addComponent(jLabel9)
@@ -447,7 +452,7 @@ public class SearchJPanel extends javax.swing.JPanel {
                             .addComponent(txtId1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4)
                             .addComponent(txtMY1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton11))
+                            .addComponent(btnTm))
                         .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
@@ -455,7 +460,7 @@ public class SearchJPanel extends javax.swing.JPanel {
                             .addComponent(jLabel6)
                             .addComponent(txtCity1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnView)
-                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtTm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtCert1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -662,26 +667,66 @@ public class SearchJPanel extends javax.swing.JPanel {
             return;
         }
         
-        if(!Brand)
+        if(!Brand){
+            if(!Pattern.matches("\\w+",txtBrand1.getText())){
+                JOptionPane.showMessageDialog(this, "Brand must be entered.");
+                return;
+            }
             selectedCars.setBrand(txtBrand1.getText());
+        }
 
-        if(!Model)
+        if(!Model){
+            if(!Pattern.matches("\\w+",txtModel1.getText())){
+                JOptionPane.showMessageDialog(this, "Model must be entered.");
+                return;
+            }
             selectedCars.setModel(txtModel1.getText());
+        }
+            
 
-        if(!City)
+        if(!City){
+            if(!Pattern.matches("[a-zA-Z]+",txtCity1.getText())){
+                JOptionPane.showMessageDialog(this, "City must be entered.");
+                return;
+            }
             selectedCars.setCity(txtCity1.getText());
+        }
 
-        if(!MY)
+
+        if(!MY){
+            if(!Pattern.matches("\\d{4}",txtMY1.getText())){
+                JOptionPane.showMessageDialog(this, "Manufactured Year must be entered.");
+                return;
+            }
             selectedCars.setYear(Integer.parseInt(txtMY1.getText()));
+        }
 
-        if(!Seats)
+        if(!Seats){
+            if(!Pattern.matches("\\d{1,2}",txtSeats1.getText())){
+                JOptionPane.showMessageDialog(this, "Seats must be entered.");
+                return;
+            }
             selectedCars.setSeatsNumber(Integer.parseInt(txtSeats1.getText()));
+        }
         
-        if(!Cert)
-            selectedCars.setCertificate(Boolean.getBoolean(txtCert1.getText()));
+        if(!Cert){
+            System.out.println(txtCert1.getText());
+            System.out.println(txtCert1.getText().equals("true"));
+            System.out.println(txtCert1.getText().equals("false"));
+            if(!(txtCert1.getText().equals("true")||txtCert1.getText().equals("false"))){
+                JOptionPane.showMessageDialog(this, "Certificate status must be entered in 'false' or 'true'.");
+                return;
+            }
+            selectedCars.setCertificate(Boolean.parseBoolean(txtCert1.getText()));
+        }
 
-        if(!Ava)
-            selectedCars.setAvailability(Boolean.getBoolean(txtAva1.getText()));
+        if(!Ava){
+            if(!(txtAva1.getText().equals("true")||txtAva1.getText().equals("false"))){
+                JOptionPane.showMessageDialog(this, "Available status must be entered in 'false' or 'true'.");
+                return;
+            }
+            selectedCars.setAvailability(Boolean.parseBoolean(txtAva1.getText()));
+        }
 
         if(Brand && Model && City && MY && Seats && Cert && Ava){
             JOptionPane.showMessageDialog(this,"Nothing changed!");
@@ -689,6 +734,9 @@ public class SearchJPanel extends javax.swing.JPanel {
         }
             
         JOptionPane.showMessageDialog(this,"Update sucess!");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String date = df.format(new Date());
+        this.date = date;
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
@@ -712,6 +760,14 @@ public class SearchJPanel extends javax.swing.JPanel {
         txtAva1.setText(String.valueOf(selectedCars.isAvailability()));
     }//GEN-LAST:event_btnViewActionPerformed
 
+    private void btnTmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTmActionPerformed
+        if(this.date.isEmpty()){
+            JOptionPane.showMessageDialog(this,"Nothing updated yet.");
+            return;
+        }
+        txtTm.setText(date);
+    }//GEN-LAST:event_btnTmActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn1Available;
@@ -724,9 +780,9 @@ public class SearchJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnMu;
     private javax.swing.JButton btnNumberA;
     private javax.swing.JButton btnSn;
+    private javax.swing.JButton btnTm;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnView;
-    private javax.swing.JButton jButton11;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -738,7 +794,6 @@ public class SearchJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField10;
     private javax.swing.JLabel lblBrand;
     private javax.swing.JLabel lblCity;
     private javax.swing.JLabel lblId;
@@ -765,11 +820,13 @@ public class SearchJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtSeats1;
     private javax.swing.JTextField txtSnMax;
     private javax.swing.JTextField txtSnMin;
+    private javax.swing.JTextField txtTm;
     // End of variables declaration//GEN-END:variables
 
     private void populateTable(ServiceRecords tmprecords) {
         DefaultTableModel model = (DefaultTableModel) tblAll.getModel();
         model.setRowCount(0);
+        
         
         for(Car car: tmprecords.getRecords()){
             Object[] row = new Object[8];
@@ -796,5 +853,5 @@ public class SearchJPanel extends javax.swing.JPanel {
     }
 }
 
-//1.每个按钮的错误提醒，输入不符合时或成功时跳出对应提醒
-//2.最后更新时间
+//最后更新时间
+//config多加样例
